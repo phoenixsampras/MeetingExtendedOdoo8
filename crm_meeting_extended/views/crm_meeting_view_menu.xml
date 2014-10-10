@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="crm_view_meeting_tmp">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+						<style>
+							table,th,td {
+							border: 2px solid black;
+							border-collapse:
+							collapse;
+							}
+							th,td {
+							padding: 5px;
+							text-align: left;
+							}
+							.font1 {
+							text-align: center;
+							font-weight: bold;
+							font-size: 16px;
+							width: 30px;
+							}
+							.font2 {
+							text-align: center;
+							font-weight: bold;
+							font-size: 20px;
+							}
+						</style>
+                        <h2 class="font2"> View Meetings</h2>
+						<table width="100%">
+							<tr>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="10%">Date:</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="16%">Initial Hour:</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="16%">Ending Hour:</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="15%">Event</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="18%">Type of Event</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="10%">Quantity</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="10%">Responsably</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="20%">Note</td>
+							</tr>
+							<t t-foreach="docs" t-as="o">
+								<t t-foreach="o.product_ids" t-as="line">
+									<tr>
+										<td>
+											<h4 t-esc="get_date(o)" />
+										</td>
+										<td>
+											<h4 t-esc="get_initial_hour(o)" />
+										</td>
+										<td>
+											<h4 t-esc="get_ending_hour(o)" />
+										</td>
+										<td>
+											<h4 t-field="o.name" />
+										</td>
+										<td>
+											<h4 t-field="o.event_id.name" />
+										</td>
+										<td>
+											<h4 t-field="line.quantity" />
+										</td>
+										<td>
+											<h4 t-field="line.responsibly_id" />
+										</td>
+										<td>
+											<h4 t-field="line.note" />
+										</td>
+									</tr>
+								</t>
+							</t>
+						</table>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</openerp>
+                             

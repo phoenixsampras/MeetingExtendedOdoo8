@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="crm_view_meeting_instruction_tmp">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="report.html_container">
+					<div class="page">
+						<div class="row">
+							<style>
+								table,th,td {
+								border: 2px solid black;
+								border-collapse:
+								collapse;
+								}
+								th,td {
+								padding: 5px;
+								text-align: left;
+								}
+								.font1 {
+								text-align: center;
+								font-weight: bold;
+								font-size: 16px;
+								width:
+								30px;
+								}
+								.font2 {
+								text-align: center;
+								font-weight: bold;
+								font-size:
+								20px;
+								}
+								.unborder{
+								border: 0px solid black;
+								border-collapse:
+								collapse;
+								}
+                        </style>
+							<table width="50%" class="unborder">
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Meeting</td>
+									<td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.name" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Type of Event
+									</td>
+									<td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.event_id.name" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Start Datetime
+									</td>
+									<td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.start_datetime" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										End Datetime
+                                    </td>
+                                    <td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.stop_datetime" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Company
+                                    </td>
+                                    <td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.company_id1.name" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Location
+                                    </td>
+                                    <td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.location_id.name"/>
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Responsibly
+                                    </td>
+                                    <td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										 <span t-field="o.user_id.name" />
+									</td>
+								</tr>
+								<tr class="unborder">
+									<td style="font-size:18px;font-weight: bold;text-align:left;" class="unborder">
+										Description
+                                    </td>
+                                    <td style="font-weight:bold;" class="unborder"> : </td>
+									<td style="font-size:18px;text-align:left;" class="unborder">
+										<span t-field="o.description" />
+									</td>
+								</tr>
+							</table>
+                            <h2 style="font-size:20;font-weight:bold;"> Activities </h2>
+							<table width="100%">
+								<tr style="background-color:black;">
+									<td style="font-size:18px;color:white;font-weight:bold;text-align:left;"
+										width="10%">Activity</td>
+									<td style="font-size:18px;font-weight:bold;color:white;text-align:left;"
+										width="10%">User</td>
+									<td style="font-size:18px;font-weight:bold;color:white;text-align:left;"
+										width="12%">Product</td>
+									<td style="font-size:18px;font-weight:bold;color:white;text-align:left;"
+										width="5%">Qty</td>
+								</tr>
+								<t t-foreach="o.product_ids" t-as="line">
+									<tr>
+										<td>
+											<h4 t-field="line.activity_id.name" />
+										</td>
+										<td>
+											<h4 t-field="line.responsibly_id.name" />
+										</td>
+										<td>
+											<h4 t-field="line.product_id.name"/>
+										</td>
+										<td>
+											<h4 t-field="line.quantity"/>
+										</td>
+									</tr>
+								</t>
+							</table>
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</openerp>

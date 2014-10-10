@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- View inherited in CRM Meeting Form -->
+		<record id="view_crm_form" model="ir.ui.view">
+			<field name="name">calendar.event.view.form</field>
+			<field name="model">calendar.event</field>
+			<field name="inherit_id" ref="calendar.view_calendar_event_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/notebook/page[@string='Meeting Details']"
+					position="inside">
+					<group>
+						<group>
+							<field name="company_id1" />
+							<field name="location_id" />
+						</group>
+						<group>
+							<field name="event_id" widget="selection" />
+							<field name="place_id" widget="selection" />
+						</group>
+					</group>
+					<seprator />
+					<center>
+						<label string="List of Activities" />
+					</center>
+					<group>
+						<field name="product_ids" colspan="1" nolabel="1">
+							<tree editable="top">
+								<field name="activity_id" />
+								<field name="responsibly_id" />
+								<field name="finish_date" />
+								<field name="product_id" />
+								<field name="quantity" />
+								<field name="note" />
+							</tree>
+							<form>
+								<field name="activity_id" />
+								<field name="responsibly_id" />
+								<field name="finish_date" />
+								<field name="product_id" />
+								<field name="quantity" />
+								<field name="note" />
+							</form>
+						</field>
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Inerited of tree view in Calendar Module -->
+
+		<record id="view_crm_meeting_tree" model="ir.ui.view">
+			<field name="name">calendar.event.view.tree</field>
+			<field name="model">calendar.event</field>
+			<field name="inherit_id" ref="calendar.view_calendar_event_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="/tree/field[@name='show_as']" position="after">
+					<field name="location_id" />
+					<field name="place_id" />
+					<field name="start_datetime" />
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Inherited of search view in Calender Module -->
+
+		<record id="view_calendar_event_search_inherit" model="ir.ui.view">
+			<field name="name">view.calendar.event.search.inherit</field>
+			<field name="model">calendar.event</field>
+			<field name="inherit_id" ref="calendar.view_calendar_event_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//search/field[@name='user_id']" position="after">
+					<field name="place_id" />
+					<field name="location_id" />
+					<field name="name" />
+					<field name="start_datetime" />
+				</xpath>
+				<xpath expr="//search/group[@string='Group By']" position="inside">
+					<filter string="Place" domain="[]" context="{'group_by':'place_id'}" />
+					<filter string="Location" domain="[]" context="{'group_by':'location_id'}" />
+					<filter string="Start Date" domain="[]" context="{'group_by':'start_datetime'}" />
+					<filter string="End Date" domain="[]" context="{'group_by':'stop_datetime'}" />
+				    <filter string="Meeting" domain="[]" context="{'group_by':'name'}" />
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Location of Form View -->
+		<record id="view_location_form" model="ir.ui.view">
+			<field name="name">locations.locations.form.view</field>
+			<field name="model">locations.locations</field>
+			<field name="arch" type="xml">
+				<form string="Location">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view of products -->
+		<record id="view_location_tree" model="ir.ui.view">
+			<field name="name">view.locations.locations.tree</field>
+			<field name="model">locations.locations</field>
+			<field name="arch" type="xml">
+				<tree string="Location">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Action for location -->
+		<record id="action_locations_menu" model="ir.actions.act_window">
+			<field name="name">Location</field>
+			<field name="res_model">locations.locations</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Menu Of Location -->
+		<menuitem id="menu_item_location" action="action_locations_menu"
+			parent="base.menu_base_config" />
+
+
+		<!-- Event of Form View -->
+
+		<record id="view_event_form" model="ir.ui.view">
+			<field name="name">crm.event.form.view</field>
+			<field name="model">crm.event</field>
+			<field name="arch" type="xml">
+				<form string="Event">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view of Event -->
+		<record id="view_event_tree" model="ir.ui.view">
+			<field name="name">view.crm.event.tree</field>
+			<field name="model">crm.event</field>
+			<field name="arch" type="xml">
+				<tree string="Event">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Action for Event -->
+		<record id="action_event_menu" model="ir.actions.act_window">
+			<field name="name">Event</field>
+			<field name="res_model">crm.event</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Menu Of Event -->
+		<menuitem id="menu_item_event" action="action_event_menu"
+			parent="base.menu_base_config" />
+
+		<!-- Place of Form View -->
+
+		<record id="view_place_form" model="ir.ui.view">
+			<field name="name">crm.place.form.view</field>
+			<field name="model">crm.place</field>
+			<field name="arch" type="xml">
+				<form string="Place">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view of Place -->
+
+		<record id="view_place_tree" model="ir.ui.view">
+			<field name="name">view.crm.place.tree</field>
+			<field name="model">crm.place</field>
+			<field name="arch" type="xml">
+				<tree string="Place">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Action for Place -->
+
+		<record id="action_place_menu" model="ir.actions.act_window">
+			<field name="name">Place</field>
+			<field name="res_model">crm.place</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Menu Of Event -->
+		<menuitem id="menu_item_place" action="action_place_menu"
+			parent="base.menu_base_config" />
+
+		<!-- Activity of Form View -->
+
+		<record id="view_activity_form" model="ir.ui.view">
+			<field name="name">crm.activity.form.view</field>
+			<field name="model">crm.activity</field>
+			<field name="arch" type="xml">
+				<form string="Activity">
+					<sheet>
+						<group>
+							<field name="name" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree view of Activity -->
+
+		<record id="view_activity_tree" model="ir.ui.view">
+			<field name="name">view.crm.activity.tree</field>
+			<field name="model">crm.activity</field>
+			<field name="arch" type="xml">
+				<tree string="Activity">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Tree view of Activity -->
+
+		<record id="action_activity_menu" model="ir.actions.act_window">
+			<field name="name">Activity</field>
+			<field name="res_model">crm.activity</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Menu Of Activity -->
+		<menuitem id="menu_item_activity" action="action_activity_menu"
+			parent="base.menu_base_config" />
+
+	</data>
+</openerp>

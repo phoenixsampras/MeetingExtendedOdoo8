@@ -1,0 +1,35 @@
+<openerp>
+    <data>
+            <report 
+             id="crm_view_meeting_report"
+             string="View Meeting Report"
+             model="calendar.event"
+             report_type="qweb-pdf"
+             file="crm_meeting_extended.crm_view_meeting_tmp"
+             name="crm_meeting_extended.crm_view_meeting_tmp"/>
+
+             <report 
+             id="crm_attendee_list_report"
+             string="Attendee List Report"
+             model="calendar.event"
+             report_type="qweb-pdf"
+             file="crm_meeting_extended.crm_attendee_list_tmp"
+             name="crm_meeting_extended.crm_attendee_list_tmp"/>
+
+             <report 
+             id="crm_meeting_instruction_report"
+             string="Meeting Instruction Report"
+             model="calendar.event"
+             report_type="qweb-pdf"
+             file="crm_meeting_extended.crm_view_meeting_instruction_tmp"
+             name="crm_meeting_extended.crm_view_meeting_instruction_tmp"/>
+
+             <report 
+             id="crm_meeting_location_report"
+             string="Location Report"
+             model="calendar.event"
+             report_type="qweb-pdf"
+             file="crm_meeting_extended.crm_view_meeting_location_tmp"
+             name="crm_meeting_extended.crm_view_meeting_location_tmp"/>
+    </data>
+</openerp>

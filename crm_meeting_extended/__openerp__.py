@@ -1,0 +1,21 @@
+{
+    'name': 'CRM Meeting Extended',
+    'version': '1.0',
+    'category':'CRM Meeting',
+    'description': '',
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
+    'depends':['crm','calendar','product'],
+    'data': [
+             'crm_meeting_form_view.xml',
+             'static/description/index.html',
+             'views/crm_meeting_report.xml',
+             'views/crm_meeting_view_menu.xml',
+             'views/crm_attendee_view_menu.xml',
+             'views/crm_meeting_instruction_view.xml',
+             'views/crm_location_view.xml',
+            ],
+    'demo': [],
+    'installable': True,
+    'auto_install': False,
+    'application':True,
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="crm_attendee_list_tmp">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+						<style>
+							table,th,td {
+							border: 2px solid black;
+							border-collapse:
+							collapse;
+							}
+							th,td {
+							padding: 5px;
+							text-align: left;
+							}
+							.font1 {
+							text-align: center;
+							font-weight: bold;
+							font-size: 16px;
+							width: 30px;
+							}
+							.font2 {
+							text-align: center;
+							font-weight: bold;
+							font-size: 20px;
+							}
+						</style>
+						<h2 style="font-size:18px;font-weight: bold;text-align:center;"> Attendee List</h2>
+						<table width="100%">
+							<tr>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="10%">#</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="16%">Name Contact</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="16%">Arrival Time</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="15%">Exiting Time</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="18%">Signature</td>
+								<td style="font-size:18px;font-weight: bold;text-align:left;"
+									width="18%">Company</td>
+							</tr>
+							<t t-foreach="docs" t-as="o">
+								<tr>
+									<td>
+										<h4 t-esc="get_serial_number()" />
+									</td>
+									<td>
+										<h4 t-field="o.user_id.name"/>
+									</td>
+									<td>
+										<h4 t-esc="get_arrival_time(o)" />
+									</td>
+									<td>
+										<h4 t-esc="get_exiting_time(o)" />
+									</td>
+									<td>
+									</td>
+									<td>
+										<h4 t-field="o.company_id1.name" />
+									</td>
+								</tr>
+							</t>
+						</table>
+						<br />
+
+							<h2 style="font-size:18px;font-weight: bold;text-align:center;"> Invitations </h2>
+							<table width="100%">
+								<tr>
+									<td style="font-size:18px;font-weight: bold;text-align:center;"
+										width="16%">Name </td>
+									<td style="font-size:18px;font-weight: bold;text-align:center;"
+										width="10%">Position</td>
+									<td style="font-size:18px;font-weight: bold;text-align:center;"
+										width="10%">Signature</td>
+								</tr>
+								<t t-foreach="docs" t-as="o">
+									<t t-foreach="o.attendee_ids" t-as="attendee_line">
+										<tr>
+											<td>
+												<h4 t-field="attendee_line.partner_id.name" />
+											</td>
+											<td>
+												<h4 t-field="attendee_line.partner_id.function"/>
+											</td>
+											<td>
+												
+											</td>
+										</tr>
+									</t>
+								</t>
+							</table>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</openerp>
